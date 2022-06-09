@@ -5,11 +5,20 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.fields import GenericForeignKey
 
 
-class Tag(models.Model):
-  value = models.TextField(max_length=100)
+class AuthorProfile(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="profile"
+    )
+    bio = models.TextField()
 
-  def __str__(self):
-    return self.value
+    def __str__(self):
+        return f"{self.__class__.__name__} object for {self.user}" 
+
+class Tag(models.Model):
+    value = models.TextField(max_length=100)
+
+    def __str__(self):
+        return self.value
 
 
 class Comment(models.Model):
