@@ -50,6 +50,14 @@ class Dev(Configuration):
 	CRISPY_TEMPLATE_PACK = "bootstrap5"
 	INTERNAL_IPS = ["192.168.10.226"]
 
+	REST_FRAMEWORK = {
+			"DEFAULT_AUTHENTICATION_CLASSES": [
+					"rest_framework.authentication.BasicAuthentication",
+					"rest_framework.authentication.SessionAuthentication",
+					"rest_framework.authentication.TokenAuthentication",
+			]
+	}
+
 	INSTALLED_APPS = [
 			'django.contrib.admin',
 			'django.contrib.auth',
@@ -61,6 +69,7 @@ class Dev(Configuration):
 			'blango_auth',
 			'blog',
 			'rest_framework',
+			'rest_framework.authtoken',
 			'crispy_forms',
 			'crispy_bootstrap5',
 			"debug_toolbar",
