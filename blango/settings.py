@@ -61,6 +61,13 @@ class Dev(Configuration):
 			],
 	}
 
+	SWAGGER_SETTINGS = {
+		"SECURITY_DEFINITIONS": {
+				"Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+				"Basic": {"type": "basic"},
+		}
+	}
+
 	INSTALLED_APPS = [
 			'django.contrib.admin',
 			'django.contrib.auth',
@@ -73,6 +80,7 @@ class Dev(Configuration):
 			'blog',
 			'rest_framework',
 			'rest_framework.authtoken',
+			'drf_yasg',
 			'crispy_forms',
 			'crispy_bootstrap5',
 			"debug_toolbar",
